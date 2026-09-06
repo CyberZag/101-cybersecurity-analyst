@@ -1,0 +1,11 @@
+From: news@company.example
+To: analyst@company.example
+Date: Sun, 06 Sep 2026 12:00:00 +0000
+Subject: Synthetic case 04 =?utf-8?b?4oCU?= partner reply workflow
+Reply-To: events@partner.example
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Expected partner replies can trigger an exact-domain mismatch. Validate the r=
+elationship out of band.

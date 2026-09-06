@@ -12,6 +12,16 @@ Offline Python investigation of synthetic authentication telemetry: non-MFA fail
 
 Start with the lab README, reproduce the tests, then add your own changes and learning notes before presenting the work as personal experience.
 
+## New investigation project
+
+### [Phishing Evidence Lab](./02-phishing-evidence-lab/)
+
+Offline EML parsing, source and attachment SHA-256, defanged URL extraction, explainable review rules, and an escaped HTML analyst report. Six original inert email cases include a benign partner control and an untrusted authentication-pass trap. **22 assistant-run tests passed on September 6, 2026; six cases, five requiring review, zero errors.** AI-assisted; learner reproduction pending. No real mail, network lookups, or attachment execution.
+
+[Start the lab](./02-phishing-evidence-lab/README.md) · [Case investigation](./02-phishing-evidence-lab/docs/case-investigation.md) · [Interview exercises](./02-phishing-evidence-lab/docs/learning-guide.md)
+
+Profile: [Zagros Saeedi on LinkedIn](https://www.linkedin.com/in/zagros-saeedi-263638257/)
+
 ## Planned study areas
 
 Networking and Linux fundamentals; email/phishing analysis; incident response and forensics; SIEM detection tuning; vulnerability management; authorized security labs.

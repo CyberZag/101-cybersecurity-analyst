@@ -1,0 +1,25 @@
+From: support@company.example
+To: analyst@company.example
+Date: Sun, 06 Sep 2026 12:00:00 +0000
+Subject: Synthetic case 02 =?utf-8?b?4oCU?= account review
+Reply-To: collect@external.example
+Authentication-Results: unverified-gateway.example; spf=fail; dmarc=fail
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="synthetic-boundary-02-link-mismatch.eml"
+
+--synthetic-boundary-02-link-mismatch.eml
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Please review your account. This message is an inert training fixture.
+
+--synthetic-boundary-02-link-mismatch.eml
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<p>Training fixture only</p><a href=3D"https://collect.external.example/login=
+">https://portal.company.example/login</a>
+
+--synthetic-boundary-02-link-mismatch.eml--

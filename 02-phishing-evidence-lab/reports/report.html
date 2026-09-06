@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>Phishing evidence lab</title><style>body{background:#101925;color:#e8eef5;font:16px/1.6 system-ui;margin:0}main{max-width:1050px;margin:auto;padding:40px 24px}h1{font-size:36px;line-height:1.2}h2{color:#76d7cb}article{background:#1b2939;border:1px solid #34495f;border-radius:12px;padding:24px;margin:24px 0}pre,code{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}pre{background:#101925;padding:12px;border-radius:6px}.badge{color:#ffd18a;font-weight:bold}li{margin:12px 0}.sub{color:#b9c9da}</style><main>
+<p class="sub">SOC PORTFOLIO · SYNTHETIC EMAILS · OFFLINE ANALYSIS</p><h1>Phishing evidence lab</h1>
+<p>Observations first. Analyst verdict second.</p><p class="sub">No links were visited or attachments executed. Authentication headers are unverified claims. No rule match does not establish safety.</p><article><h2>01-routine.eml</h2><p class="badge">no_rule_match</p><p>Synthetic case 01 — routine training update</p><p>Source SHA-256</p><pre>cdbd041144a5f73b5d690798f74a2442a2b14113884df7fc86ae4c843c8dc40b</pre><h3>Evidence to review</h3><ul><li>No rule matched. This is not a safe verdict.</li></ul><h3>Defanged URLs</h3><ul><li><code>hxxps://training[.]company[.]example/schedule</code></li></ul><h3>Attachments</h3><ul><li>None inventoried</li></ul></article><article><h2>02-link-mismatch.eml</h2><p class="badge">review_required</p><p>Synthetic case 02 — account review</p><p>Source SHA-256</p><pre>b9777e1afe000cae35160c2f6b5bfcdc37232f3d1eb06d562d5d4e85833d4817</pre><h3>Evidence to review</h3><ul><li><strong>REPLY_DOMAIN_DIFFERS</strong>: Reply-To domain differs from From; legitimate workflows can do this.<pre>{
+  &quot;from_domains&quot;: [
+    &quot;company[.]example&quot;
+  ],
+  &quot;reply_domains&quot;: [
+    &quot;external[.]example&quot;
+  ]
+}</pre></li><li><strong>REPORTED_AUTH_FAILURE</strong>: Unverified header reports an authentication failure; confirm at the receiving gateway.<pre>[
+  &quot;unverified-gateway[.]example; spf=fail; dmarc=fail&quot;
+]</pre></li><li><strong>LINK_LABEL_MISMATCH</strong>: Visible URL and destination host differ; redirects can also cause this.<pre>{
+  &quot;label&quot;: &quot;hxxps://portal[.]company[.]example/login&quot;,
+  &quot;destination&quot;: &quot;hxxps://collect[.]external[.]example/login&quot;
+}</pre></li></ul><h3>Defanged URLs</h3><ul><li><code>hxxps://collect[.]external[.]example/login</code></li><li><code>hxxps://portal[.]company[.]example/login</code></li></ul><h3>Attachments</h3><ul><li>None inventoried</li></ul></article><article><h2>03-attachment.eml</h2><p class="badge">review_required</p><p>Synthetic case 03 — inert attachment</p><p>Source SHA-256</p><pre>a11c2fd83fe7cbbcce02ae970c5cce4277aeb16fdb7456bb5707418b23cd9e5e</pre><h3>Evidence to review</h3><ul><li><strong>REVIEW_ATTACHMENT_TYPE</strong>: Attachment type can carry active content; bytes were hashed, never executed.<pre>&quot;invoice[.]xlsm&quot;</pre></li></ul><h3>Defanged URLs</h3><ul><li>None extracted</li></ul><h3>Attachments</h3><ul><li>invoice.xlsm — 27 bytes<pre>d4f429a87afccd359357dc00ad20ffb3522aa1a5c308fcb7f1f2d29e322a9ddd</pre></li></ul></article><article><h2>04-benign-control.eml</h2><p class="badge">review_required</p><p>Synthetic case 04 — partner reply workflow</p><p>Source SHA-256</p><pre>945e2861b1d91a4504f9350dfd007b3959b4aa85d8d8176f4de288fe98c66d4b</pre><h3>Evidence to review</h3><ul><li><strong>REPLY_DOMAIN_DIFFERS</strong>: Reply-To domain differs from From; legitimate workflows can do this.<pre>{
+  &quot;from_domains&quot;: [
+    &quot;company[.]example&quot;
+  ],
+  &quot;reply_domains&quot;: [
+    &quot;partner[.]example&quot;
+  ]
+}</pre></li></ul><h3>Defanged URLs</h3><ul><li>None extracted</li></ul><h3>Attachments</h3><ul><li>None inventoried</li></ul></article><article><h2>05-auth-pass-trap.eml</h2><p class="badge">review_required</p><p>Synthetic case 05 — userinfo URL and passing claim</p><p>Source SHA-256</p><pre>24539b17a697ddecc7155d33f107ee0dcec4150aed87ac94932bfdd6874e06d9</pre><h3>Evidence to review</h3><ul><li><strong>URL_USERINFO</strong>: Text before @ is userinfo, not the destination host.<pre>&quot;hxxps://portal[.]company[.]example@collect[.]external[.]example/login&quot;</pre></li></ul><h3>Defanged URLs</h3><ul><li><code>hxxps://portal[.]company[.]example@collect[.]external[.]example/login</code></li></ul><h3>Attachments</h3><ul><li>None inventoried</li></ul></article><article><h2>06-auth-failure.eml</h2><p class="badge">review_required</p><p>Synthetic case 06 — reported failure alone</p><p>Source SHA-256</p><pre>592d20185751a4573eaec8c933713d1776dec8a5e77073deb4eb7b8d2dcc1a36</pre><h3>Evidence to review</h3><ul><li><strong>REPORTED_AUTH_FAILURE</strong>: Unverified header reports an authentication failure; confirm at the receiving gateway.<pre>[
+  &quot;unverified-gateway[.]example; spf=softfail&quot;
+]</pre></li></ul><h3>Defanged URLs</h3><ul><li>None extracted</li></ul><h3>Attachments</h3><ul><li>None inventoried</li></ul></article></main></html>

@@ -1,0 +1,22 @@
+From: training@company.example
+To: analyst@company.example
+Date: Sun, 06 Sep 2026 12:00:00 +0000
+Subject: Synthetic case 03 =?utf-8?b?4oCU?= inert attachment
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="synthetic-boundary-03-attachment.eml"
+
+--synthetic-boundary-03-attachment.eml
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+A placeholder attachment for hashing practice. It contains no executable code.
+
+--synthetic-boundary-03-attachment.eml
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="invoice.xlsm"
+MIME-Version: 1.0
+
+SU5FUlQgVFJBSU5JTkcgUExBQ0VIT0xERVIK
+
+--synthetic-boundary-03-attachment.eml--

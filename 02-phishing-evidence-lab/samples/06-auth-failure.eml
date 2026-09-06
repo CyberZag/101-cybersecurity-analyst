@@ -1,0 +1,11 @@
+From: training@company.example
+To: analyst@company.example
+Date: Sun, 06 Sep 2026 12:00:00 +0000
+Subject: Synthetic case 06 =?utf-8?b?4oCU?= reported failure alone
+Authentication-Results: unverified-gateway.example; spf=softfail
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+A claimed authentication failure needs gateway confirmation and context. It d=
+oes not prove phishing.

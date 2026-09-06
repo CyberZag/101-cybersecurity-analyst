@@ -1,0 +1,12 @@
+From: training@company.example
+To: analyst@company.example
+Date: Sun, 06 Sep 2026 12:00:00 +0000
+Subject: Synthetic case 05 =?utf-8?b?4oCU?= userinfo URL and passing claim
+Authentication-Results:
+ attacker-supplied.example; spf=pass; dkim=pass; dmarc=pass
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+The host is after the @ symbol: https://portal.company.example@collect.extern=
+al.example/login

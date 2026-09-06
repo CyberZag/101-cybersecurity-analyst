@@ -1,0 +1,256 @@
+{
+  "cases": [
+    {
+      "schema_version": 1,
+      "file": "01-routine.eml",
+      "source_sha256": "cdbd041144a5f73b5d690798f74a2442a2b14113884df7fc86ae4c843c8dc40b",
+      "source_bytes": 362,
+      "subject": "Synthetic case 01 — routine training update",
+      "from": [
+        "training@company.example"
+      ],
+      "reply_to": [],
+      "authentication_header_claims": [],
+      "authentication_verified": false,
+      "urls": [
+        {
+          "original": "https://training.company.example/schedule",
+          "defanged": "hxxps://training[.]company[.]example/schedule",
+          "host": "training.company.example"
+        }
+      ],
+      "attachments": [],
+      "findings": [],
+      "disposition": "no_rule_match",
+      "limitations": [
+        "No-rule-match does not mean safe.",
+        "No URLs, DNS, reputation services, or attachments were opened.",
+        "Header claims are untrusted until corroborated by trusted gateway evidence.",
+        "Exact host comparisons do not implement organizational-domain or DMARC alignment.",
+        "No archive expansion, OCR, JavaScript, DKIM validation, or nested-message investigation.",
+        "Attached message containers need separate analysis; leaf attachments are inventoried."
+      ]
+    },
+    {
+      "schema_version": 1,
+      "file": "02-link-mismatch.eml",
+      "source_sha256": "b9777e1afe000cae35160c2f6b5bfcdc37232f3d1eb06d562d5d4e85833d4817",
+      "source_bytes": 898,
+      "subject": "Synthetic case 02 — account review",
+      "from": [
+        "support@company.example"
+      ],
+      "reply_to": [
+        "collect@external.example"
+      ],
+      "authentication_header_claims": [
+        "unverified-gateway.example; spf=fail; dmarc=fail"
+      ],
+      "authentication_verified": false,
+      "urls": [
+        {
+          "original": "https://collect.external.example/login",
+          "defanged": "hxxps://collect[.]external[.]example/login",
+          "host": "collect.external.example"
+        },
+        {
+          "original": "https://portal.company.example/login",
+          "defanged": "hxxps://portal[.]company[.]example/login",
+          "host": "portal.company.example"
+        }
+      ],
+      "attachments": [],
+      "findings": [
+        {
+          "rule": "REPLY_DOMAIN_DIFFERS",
+          "reason": "Reply-To domain differs from From; legitimate workflows can do this.",
+          "evidence": {
+            "from_domains": [
+              "company.example"
+            ],
+            "reply_domains": [
+              "external.example"
+            ]
+          }
+        },
+        {
+          "rule": "REPORTED_AUTH_FAILURE",
+          "reason": "Unverified header reports an authentication failure; confirm at the receiving gateway.",
+          "evidence": [
+            "unverified-gateway.example; spf=fail; dmarc=fail"
+          ]
+        },
+        {
+          "rule": "LINK_LABEL_MISMATCH",
+          "reason": "Visible URL and destination host differ; redirects can also cause this.",
+          "evidence": {
+            "label": "https://portal.company.example/login",
+            "destination": "https://collect.external.example/login"
+          }
+        }
+      ],
+      "disposition": "review_required",
+      "limitations": [
+        "No-rule-match does not mean safe.",
+        "No URLs, DNS, reputation services, or attachments were opened.",
+        "Header claims are untrusted until corroborated by trusted gateway evidence.",
+        "Exact host comparisons do not implement organizational-domain or DMARC alignment.",
+        "No archive expansion, OCR, JavaScript, DKIM validation, or nested-message investigation.",
+        "Attached message containers need separate analysis; leaf attachments are inventoried."
+      ]
+    },
+    {
+      "schema_version": 1,
+      "file": "03-attachment.eml",
+      "source_sha256": "a11c2fd83fe7cbbcce02ae970c5cce4277aeb16fdb7456bb5707418b23cd9e5e",
+      "source_bytes": 739,
+      "subject": "Synthetic case 03 — inert attachment",
+      "from": [
+        "training@company.example"
+      ],
+      "reply_to": [],
+      "authentication_header_claims": [],
+      "authentication_verified": false,
+      "urls": [],
+      "attachments": [
+        {
+          "filename": "invoice.xlsm",
+          "bytes": 27,
+          "sha256": "d4f429a87afccd359357dc00ad20ffb3522aa1a5c308fcb7f1f2d29e322a9ddd",
+          "content_type": "application/octet-stream"
+        }
+      ],
+      "findings": [
+        {
+          "rule": "REVIEW_ATTACHMENT_TYPE",
+          "reason": "Attachment type can carry active content; bytes were hashed, never executed.",
+          "evidence": "invoice.xlsm"
+        }
+      ],
+      "disposition": "review_required",
+      "limitations": [
+        "No-rule-match does not mean safe.",
+        "No URLs, DNS, reputation services, or attachments were opened.",
+        "Header claims are untrusted until corroborated by trusted gateway evidence.",
+        "Exact host comparisons do not implement organizational-domain or DMARC alignment.",
+        "No archive expansion, OCR, JavaScript, DKIM validation, or nested-message investigation.",
+        "Attached message containers need separate analysis; leaf attachments are inventoried."
+      ]
+    },
+    {
+      "schema_version": 1,
+      "file": "04-benign-control.eml",
+      "source_sha256": "945e2861b1d91a4504f9350dfd007b3959b4aa85d8d8176f4de288fe98c66d4b",
+      "source_bytes": 413,
+      "subject": "Synthetic case 04 — partner reply workflow",
+      "from": [
+        "news@company.example"
+      ],
+      "reply_to": [
+        "events@partner.example"
+      ],
+      "authentication_header_claims": [],
+      "authentication_verified": false,
+      "urls": [],
+      "attachments": [],
+      "findings": [
+        {
+          "rule": "REPLY_DOMAIN_DIFFERS",
+          "reason": "Reply-To domain differs from From; legitimate workflows can do this.",
+          "evidence": {
+            "from_domains": [
+              "company.example"
+            ],
+            "reply_domains": [
+              "partner.example"
+            ]
+          }
+        }
+      ],
+      "disposition": "review_required",
+      "limitations": [
+        "No-rule-match does not mean safe.",
+        "No URLs, DNS, reputation services, or attachments were opened.",
+        "Header claims are untrusted until corroborated by trusted gateway evidence.",
+        "Exact host comparisons do not implement organizational-domain or DMARC alignment.",
+        "No archive expansion, OCR, JavaScript, DKIM validation, or nested-message investigation.",
+        "Attached message containers need separate analysis; leaf attachments are inventoried."
+      ]
+    },
+    {
+      "schema_version": 1,
+      "file": "05-auth-pass-trap.eml",
+      "source_sha256": "24539b17a697ddecc7155d33f107ee0dcec4150aed87ac94932bfdd6874e06d9",
+      "source_bytes": 469,
+      "subject": "Synthetic case 05 — userinfo URL and passing claim",
+      "from": [
+        "training@company.example"
+      ],
+      "reply_to": [],
+      "authentication_header_claims": [
+        "attacker-supplied.example; spf=pass; dkim=pass; dmarc=pass"
+      ],
+      "authentication_verified": false,
+      "urls": [
+        {
+          "original": "https://portal.company.example@collect.external.example/login",
+          "defanged": "hxxps://portal[.]company[.]example@collect[.]external[.]example/login",
+          "host": "collect.external.example"
+        }
+      ],
+      "attachments": [],
+      "findings": [
+        {
+          "rule": "URL_USERINFO",
+          "reason": "Text before @ is userinfo, not the destination host.",
+          "evidence": "https://portal.company.example@collect.external.example/login"
+        }
+      ],
+      "disposition": "review_required",
+      "limitations": [
+        "No-rule-match does not mean safe.",
+        "No URLs, DNS, reputation services, or attachments were opened.",
+        "Header claims are untrusted until corroborated by trusted gateway evidence.",
+        "Exact host comparisons do not implement organizational-domain or DMARC alignment.",
+        "No archive expansion, OCR, JavaScript, DKIM validation, or nested-message investigation.",
+        "Attached message containers need separate analysis; leaf attachments are inventoried."
+      ]
+    },
+    {
+      "schema_version": 1,
+      "file": "06-auth-failure.eml",
+      "source_sha256": "592d20185751a4573eaec8c933713d1776dec8a5e77073deb4eb7b8d2dcc1a36",
+      "source_bytes": 448,
+      "subject": "Synthetic case 06 — reported failure alone",
+      "from": [
+        "training@company.example"
+      ],
+      "reply_to": [],
+      "authentication_header_claims": [
+        "unverified-gateway.example; spf=softfail"
+      ],
+      "authentication_verified": false,
+      "urls": [],
+      "attachments": [],
+      "findings": [
+        {
+          "rule": "REPORTED_AUTH_FAILURE",
+          "reason": "Unverified header reports an authentication failure; confirm at the receiving gateway.",
+          "evidence": [
+            "unverified-gateway.example; spf=softfail"
+          ]
+        }
+      ],
+      "disposition": "review_required",
+      "limitations": [
+        "No-rule-match does not mean safe.",
+        "No URLs, DNS, reputation services, or attachments were opened.",
+        "Header claims are untrusted until corroborated by trusted gateway evidence.",
+        "Exact host comparisons do not implement organizational-domain or DMARC alignment.",
+        "No archive expansion, OCR, JavaScript, DKIM validation, or nested-message investigation.",
+        "Attached message containers need separate analysis; leaf attachments are inventoried."
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,48 @@
+Validation executed by the Codex assistant on 2026-09-06.
+Environment: Windows-11-10.0.26200-SP0
+Python: 3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]
+Learner reproduction: pending. Synthetic fixtures only.
+
+COMMAND: python make_samples.py
+EXIT: 0
+Generated 6 inert messages
+
+
+
+COMMAND: python -m unittest -v
+EXIT: 0
+Generated 6 inert messages
+
+test_attached_html_not_used_as_outer_body (test_triage.EvidenceTests.test_attached_html_not_used_as_outer_body) ... ok
+test_attachment_hash_and_no_write (test_triage.EvidenceTests.test_attachment_hash_and_no_write) ... ok
+test_auth_failure_is_reported_claim (test_triage.EvidenceTests.test_auth_failure_is_reported_claim) ... ok
+test_cli_batch_and_partial_error (test_triage.EvidenceTests.test_cli_batch_and_partial_error) ... ok
+test_deduplicated_urls (test_triage.EvidenceTests.test_deduplicated_urls) ... ok
+test_different_reply_domain_is_review_not_malicious (test_triage.EvidenceTests.test_different_reply_domain_is_review_not_malicious) ... ok
+test_display_link_host_mismatch (test_triage.EvidenceTests.test_display_link_host_mismatch) ... ok
+test_duplicate_from (test_triage.EvidenceTests.test_duplicate_from) ... ok
+test_empty_rejected (test_triage.EvidenceTests.test_empty_rejected) ... ok
+test_matching_html_link (test_triage.EvidenceTests.test_matching_html_link) ... ok
+test_multiple_from_addresses (test_triage.EvidenceTests.test_multiple_from_addresses) ... ok
+test_nested_email_not_used_as_outer_body (test_triage.EvidenceTests.test_nested_email_not_used_as_outer_body) ... ok
+test_nested_label_text (test_triage.EvidenceTests.test_nested_label_text) ... ok
+test_no_socket_connections (test_triage.EvidenceTests.test_no_socket_connections) ... ok
+test_passing_header_never_proves_safety (test_triage.EvidenceTests.test_passing_header_never_proves_safety) ... ok
+test_reply_domain_case_insensitive (test_triage.EvidenceTests.test_reply_domain_case_insensitive) ... ok
+test_report_escapes_hostile_text_and_no_active_links (test_triage.EvidenceTests.test_report_escapes_hostile_text_and_no_active_links) ... ok
+test_routine_is_not_safe_verdict (test_triage.EvidenceTests.test_routine_is_not_safe_verdict) ... ok
+test_size_limit (test_triage.EvidenceTests.test_size_limit) ... ok
+test_source_hash_matches_original_bytes (test_triage.EvidenceTests.test_source_hash_matches_original_bytes) ... ok
+test_unknown_charset_degrades_visibly (test_triage.EvidenceTests.test_unknown_charset_degrades_visibly) ... ok
+test_url_userinfo (test_triage.EvidenceTests.test_url_userinfo) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.339s
+
+OK
+
+
+COMMAND: python triage.py samples --out reports
+EXIT: 0
+Analyzed 6 messages; 5 require review; 0 errors
+
