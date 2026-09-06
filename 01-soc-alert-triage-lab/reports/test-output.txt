@@ -1,0 +1,35 @@
+test_bad_ip_rejected (test_triage.TriageTests.test_bad_ip_rejected) ... ok
+test_bad_result_rejected (test_triage.TriageTests.test_bad_result_rejected) ... ok
+test_below_threshold (test_triage.TriageTests.test_below_threshold) ... ok
+test_clean_user_has_no_alert (test_triage.TriageTests.test_clean_user_has_no_alert) ... ok
+test_csv_header_rejected (test_triage.TriageTests.test_csv_header_rejected) ... ok
+test_demo_has_exactly_three_findings (test_triage.TriageTests.test_demo_has_exactly_three_findings) ... ok
+test_duplicate_rows_do_not_inflate_count (test_triage.TriageTests.test_duplicate_rows_do_not_inflate_count) ... ok
+test_empty_input (test_triage.TriageTests.test_empty_input) ... ok
+test_equal_times_do_not_prove_order (test_triage.TriageTests.test_equal_times_do_not_prove_order) ... ok
+test_failures_need_same_source_ip (test_triage.TriageTests.test_failures_need_same_source_ip) ... ok
+test_failures_not_recycled_after_success (test_triage.TriageTests.test_failures_not_recycled_after_success) ... ok
+test_haversine_identical_points (test_triage.TriageTests.test_haversine_identical_points) ... ok
+test_inconsistent_mfa_rejected (test_triage.TriageTests.test_inconsistent_mfa_rejected) ... ok
+test_invalid_threshold_rejected (test_triage.TriageTests.test_invalid_threshold_rejected) ... ok
+test_json_cli (test_triage.TriageTests.test_json_cli) ... ok
+test_mfa_can_span_ips (test_triage.TriageTests.test_mfa_can_span_ips) ... ok
+test_mfa_denials_are_not_password_failures (test_triage.TriageTests.test_mfa_denials_are_not_password_failures) ... ok
+test_mfa_requires_explicit_approval (test_triage.TriageTests.test_mfa_requires_explicit_approval) ... ok
+test_mfa_timeouts_supported (test_triage.TriageTests.test_mfa_timeouts_supported) ... ok
+test_missing_field_rejected (test_triage.TriageTests.test_missing_field_rejected) ... ok
+test_missing_file_has_clean_error (test_triage.TriageTests.test_missing_file_has_clean_error) ... ok
+test_naive_time_rejected (test_triage.TriageTests.test_naive_time_rejected) ... ok
+test_plausible_travel_not_flagged (test_triage.TriageTests.test_plausible_travel_not_flagged) ... ok
+test_simultaneous_distant_logins_flagged (test_triage.TriageTests.test_simultaneous_distant_logins_flagged) ... ok
+test_success_must_follow_failures (test_triage.TriageTests.test_success_must_follow_failures) ... ok
+test_timezone_normalized (test_triage.TriageTests.test_timezone_normalized) ... ok
+test_unknown_city_not_guessed (test_triage.TriageTests.test_unknown_city_not_guessed) ... ok
+test_unsorted_input_is_stable (test_triage.TriageTests.test_unsorted_input_is_stable) ... ok
+test_window_boundary_inclusive (test_triage.TriageTests.test_window_boundary_inclusive) ... ok
+test_window_boundary_outside (test_triage.TriageTests.test_window_boundary_outside) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.013s
+
+OK

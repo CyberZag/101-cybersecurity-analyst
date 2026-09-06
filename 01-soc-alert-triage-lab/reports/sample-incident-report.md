@@ -1,55 +1,26 @@
-# Sample SOC Incident Report — Suspicious Authentication Sequence
+# Synthetic incident-triage report
 
-## Incident summary
+**Case:** LAB-AUTH-001 | **Data:** fabricated sign-ins dated August 20, 2026 | **Review date:** September 6, 2026
 
-**Severity:** Critical  
-**Status:** Escalate for containment  
-**Affected identity:** `carol`  
-**Primary source:** `192.0.2.44`  
-**MITRE ATT&CK:** T1621 (MFA Request Generation), T1078 (Valid Accounts)
+**Status:** Three detection candidates; no real compromise established. No production data, user contact, containment or external lookup was performed. The assistant executed the tool locally; the learner must reproduce it.
 
-## What happened
+## Evidence
 
-Synthetic authentication telemetry shows five denied MFA prompts for the same user between 14:00 and 14:04 UTC, followed by a successful authentication at 14:05 UTC from the same source IP.
+- **Bob, 13:00–13:05 UTC:** five non-MFA failures followed by a successful sign-in from the same synthetic source, 203.0.113.77. Queue priority HIGH (80, illustrative). Possible credential attack; failure reasons and legitimate-user context are missing.
+- **Carol, 14:00–14:05 UTC:** five denied MFA events followed by explicit approved success. Priority HIGH (85, illustrative). Possible push-fatigue sequence; the source, 192.0.2.44, is a documentation address. This no longer creates a duplicate brute-force finding.
+- **Dana, 15:00–15:25 UTC:** successful Toronto and Tokyo fixture locations about 10,352 km apart in 25 minutes. Priority MEDIUM (60, illustrative). This cannot establish actual travel or unauthorized access.
+- **Alice:** no detection candidate on the supplied two successful Toronto events. Absence of an alert is not proof of account safety.
 
-## Why this is suspicious
+All source IPs are reserved documentation examples; country/city values were supplied as synthetic data, not looked up from these addresses. Event timestamps are normalized to UTC. Exact output is in findings.json; all 30 supplied tests passed in the recorded local run.
 
-Repeated MFA denials followed by an approval can indicate MFA fatigue: an attacker who already has valid credentials repeatedly generates prompts until the user accepts one. The successful sign-in increases the urgency because the activity is no longer only attempted access.
+## Recommended investigation in an authorized environment
 
-## Evidence reviewed
+Verify event IDs, collection quality, authentication error and method, tenant policy, device trust, source ASN and known VPN egress, sessions, user baseline, and sign-ins around the alert. Correlate with password/MFA resets, newly created credentials, mailbox rules, privileged actions, endpoint events and other account changes. Contact the user through a trusted channel under the organization's incident process. Preserve original logs and document facts separately from assumptions.
 
-| Time (UTC) | User | Source IP | Result | MFA result |
-|---|---|---|---|---|
-| 14:00 | carol | 192.0.2.44 | Failed | Denied |
-| 14:01 | carol | 192.0.2.44 | Failed | Denied |
-| 14:02 | carol | 192.0.2.44 | Failed | Denied |
-| 14:03 | carol | 192.0.2.44 | Failed | Denied |
-| 14:04 | carol | 192.0.2.44 | Failed | Denied |
-| 14:05 | carol | 192.0.2.44 | Success | Approved |
+## Escalation and containment
 
-## Analyst assessment
+Escalate based on evidence, asset sensitivity and the organization's severity matrix, not these illustrative scores. If unauthorized access is corroborated, follow the approved runbook for revoking sessions, credential/MFA recovery and any device containment. Obtain required authority, capture evidence, consider business impact, and validate recovery. This lab did not take any such actions.
 
-**Assessment:** Likely suspicious; requires immediate user validation and session review.
+## Limitations
 
-Potential false positives include a legitimate user repeatedly rejecting prompts caused by a misconfigured application or an authentication retry loop. However, the successful approval after multiple denials is enough to justify escalation.
-
-## Recommended containment
-
-1. Validate the activity directly with the user through a trusted channel.
-2. Revoke active sessions if the login is not recognized.
-3. Reset the password and require re-registration of MFA where appropriate.
-4. Review Conditional Access, sign-in risk, device identity, and source-IP reputation.
-5. Hunt for post-authentication activity such as mailbox changes, privilege changes, token use, downloads, or unusual endpoint activity.
-6. Preserve the timeline and evidence in the case record.
-
-## Follow-up questions
-
-- Was the source device known and compliant?
-- Was the user traveling or using a corporate VPN?
-- Did any risky account changes occur after 14:05 UTC?
-- Were other users targeted by the same IP?
-- Did the source IP appear in threat-intelligence or prior incidents?
-
-## Scope note
-
-This report is based entirely on fabricated training data and demonstrates defensive SOC documentation technique only.
+Sixteen fabricated events are insufficient to measure precision, recall, false-positive rate or business impact. No tenant deployment or KQL execution occurred. The current schema and city fixture are deliberately limited. This document is a practice analyst handoff, not a historical breach report.

@@ -1,0 +1,38 @@
+[
+  {
+    "type": "MFA fatigue candidate",
+    "severity": "HIGH",
+    "score": 85,
+    "user": "carol",
+    "source_ip": "192.0.2.44",
+    "first_seen": "2026-08-20T14:00:00+00:00",
+    "last_seen": "2026-08-20T14:05:00+00:00",
+    "count": 5,
+    "evidence": "5 MFA denials/timeouts in 600s before MFA-approved success",
+    "mitre": "T1621; T1078 (hypothesis)"
+  },
+  {
+    "type": "Brute-force candidate",
+    "severity": "HIGH",
+    "score": 80,
+    "user": "bob",
+    "source_ip": "203.0.113.77",
+    "first_seen": "2026-08-20T13:00:00+00:00",
+    "last_seen": "2026-08-20T13:05:00+00:00",
+    "count": 5,
+    "evidence": "5 non-MFA failures in 600s before success",
+    "mitre": "T1110; T1078 (hypothesis)"
+  },
+  {
+    "type": "Suspicious geo-velocity",
+    "severity": "MEDIUM",
+    "score": 60,
+    "user": "dana",
+    "source_ip": "203.0.113.91",
+    "first_seen": "2026-08-20T15:00:00+00:00",
+    "last_seen": "2026-08-20T15:25:00+00:00",
+    "count": 2,
+    "evidence": "10352 km in 25.0 minutes; 24844 km/h; validate VPN/device context",
+    "mitre": "T1078 (hypothesis, not proof of compromise)"
+  }
+]

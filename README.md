@@ -1,40 +1,24 @@
 # 101 Cybersecurity Analyst
 
-A hands-on cybersecurity learning portfolio focused on building analyst skills through original, reviewable lab artifacts.
+A defensive cybersecurity learning portfolio. Projects use authorized lab material and clearly distinguish implementation, test evidence and personal learning progress.
 
-## Completed project
+## Working starter project
 
-### [SOC Alert Triage Lab — Authentication Attack Investigation](./01-soc-alert-triage-lab/)
+### [SOC Authentication Triage Lab](./01-soc-alert-triage-lab/)
 
-A beginner-to-intermediate Tier-1 SOC project that turns synthetic authentication telemetry into an investigation workflow.
+Offline Python investigation of synthetic authentication telemetry: non-MFA failures before success, MFA-denial sequences and suspicious geo-velocity. Includes a command-line interface, schema validation, UTC normalization, JSON findings, 30 unit tests, an analyst report, draft Sentinel hunting queries and an interview learning guide.
 
-**What it demonstrates:**
+**Validation:** the assistant ran the revised Python project on September 6, 2026: 16 synthetic rows, three findings, 30 passing tests. **AI-assisted implementation; learner reproduction pending. KQL has not been executed in a tenant.** These artifacts do not establish production incident-response experience or real-world detection accuracy.
 
-- Python log parsing and alert triage
-- Brute-force-followed-by-success detection
-- MFA-fatigue detection
-- Impossible-travel / geo-velocity analysis
-- Microsoft Sentinel KQL examples
-- MITRE ATT&CK mapping (T1110, T1621, T1078)
-- Risk prioritization and escalation reasoning
-- SOC-style incident documentation and containment recommendations
-- Unit testing with reproducible synthetic data
-
-The project is intentionally built with fabricated telemetry so it can be safely reproduced and discussed in interviews without exposing real credentials or customer data.
+Start with the lab README, reproduce the tests, then add your own changes and learning notes before presenting the work as personal experience.
 
 ## Planned study areas
 
-- Networking and Linux fundamentals
-- Threat detection, hunting, and intelligence
-- Email and phishing analysis
-- Incident response and forensic fundamentals
-- SIEM monitoring and detection tuning
-- Vulnerability management
-- Authorized web and wireless security labs
+Networking and Linux fundamentals; email/phishing analysis; incident response and forensics; SIEM detection tuning; vulnerability management; authorized security labs.
 
 ## Publishing standard
 
-New work will include an objective, authorized scope, reproducible setup or safe sample data, observed result, detection or investigation logic, and a short reflection. Credentials, personal data, target details, and copyrighted course material will not be committed.
+Every addition should include an objective, authorized scope, reproducible input, actual observed result, limitations and a reflection. Do not publish credentials, personal data, invented evidence, copyrighted course content or claims of unperformed work.
 
 ## Related work
 
