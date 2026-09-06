@@ -1,0 +1,17 @@
+timestamp,user,source_ip,country,city,device,result,mfa_result
+2026-08-20T12:00:00Z,alice,198.51.100.23,Canada,Toronto,LAPTOP-A,success,approved
+2026-08-20T12:07:00Z,alice,198.51.100.23,Canada,Toronto,LAPTOP-A,success,approved
+2026-08-20T13:00:00Z,bob,203.0.113.77,Germany,Berlin,UNKNOWN,failed,not_applicable
+2026-08-20T13:01:00Z,bob,203.0.113.77,Germany,Berlin,UNKNOWN,failed,not_applicable
+2026-08-20T13:02:00Z,bob,203.0.113.77,Germany,Berlin,UNKNOWN,failed,not_applicable
+2026-08-20T13:03:00Z,bob,203.0.113.77,Germany,Berlin,UNKNOWN,failed,not_applicable
+2026-08-20T13:04:00Z,bob,203.0.113.77,Germany,Berlin,UNKNOWN,failed,not_applicable
+2026-08-20T13:05:00Z,bob,203.0.113.77,Germany,Berlin,UNKNOWN,success,approved
+2026-08-20T14:00:00Z,carol,192.0.2.44,Canada,Vancouver,PHONE-C,failed,denied
+2026-08-20T14:01:00Z,carol,192.0.2.44,Canada,Vancouver,PHONE-C,failed,denied
+2026-08-20T14:02:00Z,carol,192.0.2.44,Canada,Vancouver,PHONE-C,failed,denied
+2026-08-20T14:03:00Z,carol,192.0.2.44,Canada,Vancouver,PHONE-C,failed,denied
+2026-08-20T14:04:00Z,carol,192.0.2.44,Canada,Vancouver,PHONE-C,failed,denied
+2026-08-20T14:05:00Z,carol,192.0.2.44,Canada,Vancouver,PHONE-C,success,approved
+2026-08-20T15:00:00Z,dana,198.51.100.52,Canada,Toronto,LAPTOP-D,success,approved
+2026-08-20T15:25:00Z,dana,203.0.113.91,Japan,Tokyo,UNKNOWN,success,approved
