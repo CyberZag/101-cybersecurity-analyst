@@ -1,0 +1,43 @@
+// Educational Microsoft Sentinel / Entra ID detection examples.
+// Validate table names, fields, thresholds, and exclusions in your own authorized tenant.
+
+// 1) Repeated failures followed by success from the same user/IP within 10 minutes
+SigninLogs
+| project TimeGenerated, UserPrincipalName, IPAddress, ResultType, Location
+| sort by UserPrincipalName asc, IPAddress asc, TimeGenerated asc
+| summarize
+    FailedAttempts = countif(ResultType != 0),
+    SuccessfulAttempts = countif(ResultType == 0),
+    FirstSeen = min(TimeGenerated),
+    LastSeen = max(TimeGenerated)
+  by UserPrincipalName, IPAddress, bin(TimeGenerated, 10m)
+| where FailedAttempts >= 5 and SuccessfulAttempts >= 1
+| extend MITRE = "T1110 / T1078"
+
+// 2) MFA-denial burst followed by a successful authentication
+SigninLogs
+| where TimeGenerated > ago(1d)
+| extend StatusText = tostring(Status.additionalDetails)
+| summarize
+    DeniedMFA = countif(StatusText has_any ("denied", "MFA denied", "user declined")),
+    Successes = countif(ResultType == 0),
+    FirstSeen = min(TimeGenerated),
+    LastSeen = max(TimeGenerated)
+  by UserPrincipalName, IPAddress, bin(TimeGenerated, 10m)
+| where DeniedMFA >= 5 and Successes >= 1
+| extend MITRE = "T1621 / T1078"
+
+// 3) Suspicious geo change starter query
+// Production impossible-travel logic should use reliable geolocation enrichment and account for VPNs/proxies.
+SigninLogs
+| where ResultType == 0
+| project TimeGenerated, UserPrincipalName, IPAddress,
+          Country = tostring(LocationDetails.countryOrRegion),
+          City = tostring(LocationDetails.city)
+| sort by UserPrincipalName asc, TimeGenerated asc
+| serialize
+| extend PrevUser = prev(UserPrincipalName), PrevCountry = prev(Country), PrevCity = prev(City), PrevTime = prev(TimeGenerated)
+| where UserPrincipalName == PrevUser and Country != PrevCountry
+| extend MinutesBetween = datetime_diff('minute', TimeGenerated, PrevTime)
+| where MinutesBetween between (0 .. 120)
+| extend MITRE = "T1078"
