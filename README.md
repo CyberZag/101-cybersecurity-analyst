@@ -1,5 +1,7 @@
 # 101 Cybersecurity Analyst
 
+**[View Zagros Saeedi’s résumé](./resume.md)** · [LinkedIn](https://www.linkedin.com/in/zagros-saeedi-263638257/)
+
 A defensive cybersecurity learning portfolio. Projects use authorized lab material and clearly distinguish implementation, test evidence and personal learning progress.
 
 ## Working starter project
